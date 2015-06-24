@@ -1,5 +1,5 @@
 
-Tobin - BCF
+Tobin - TBN
 
 - 60 sec block time
 - diff retarget each block
