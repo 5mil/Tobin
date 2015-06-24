@@ -69,7 +69,7 @@ map<uint256, map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "BitcoinFast Signed Message:\n";
+const string strMessageMagic = "Tobin Signed Message:\n";
 
 double dHashesPerSec;
 int64 nHPSTimerStart;
@@ -306,9 +306,9 @@ bool CTransaction::IsStandard() const
 
         // 2014-04-19 Adriano https://bitcointalk.org/index.php?action=profile;u=112568
         // The following address was lost during distribution with 196780608.602771 coins in it. Blocking just in case :-)
-        static const CBitcoinAddress lostWallet ("CKGK6MFmBkreG7k5sU8gDEJNVJ57QZtN3H");
-        uint256 hashBlock;
-        CTransaction txPrev;
+        //static const CBitcoinAddress lostWallet ("CKGK6MFmBkreG7k5sU8gDEJNVJ57QZtN3H");
+        //uint256 hashBlock;
+        //CTransaction txPrev;
 
         if(GetTransaction(txin.prevout.hash, txPrev, hashBlock)){  // get the vin's previous transaction
             CTxDestination source;
@@ -1513,8 +1513,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     // Now that the whole chain is irreversibly beyond that time it is applied to all blocks except the
     // two in the chain that violate it. This prevents exploiting the issue against nodes in their
     // initial block download.
-    bool fEnforceBIP30 = true; // Always active in BitcoinFast
-    bool fStrictPayToScriptHash = true; // Always active in BitcoinFast
+    bool fEnforceBIP30 = true; // Always active in Tobin
+    bool fStrictPayToScriptHash = true; // Always active in Tobin
 
     //// issue here: it doesn't know the version
     unsigned int nTxPos;
@@ -2481,7 +2481,7 @@ bool CheckDiskSpace(uint64 nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low!");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        uiInterface.ThreadSafeMessageBox(strMessage, "BitcoinFast", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
+        uiInterface.ThreadSafeMessageBox(strMessage, "Tobin", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         StartShutdown();
         return false;
     }
@@ -2574,7 +2574,7 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 
         // Genesis block
-        const char* pszTimestamp = "November 30, 2014, BitcoinFast Baby! 1417308818.";
+        const char* pszTimestamp = "November 30, 2014, Tobin Baby! 1417308818.";
         CTransaction txNew;
         txNew.nTime = nChainStartTime;
         txNew.vin.resize(1);

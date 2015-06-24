@@ -1,5 +1,5 @@
 
-BitcoinFast - BCF
+Tobin - BCF
 
 - 60 sec block time
 - diff retarget each block
