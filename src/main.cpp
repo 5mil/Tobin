@@ -966,17 +966,17 @@ int64 GetProofOfWorkReward(int nHeight, int64 nFees, uint256 prevHash)
 
 	if (nHeight == 1)
 	{
-		nSubsidy = 1000000 * COIN;	// 1 Million coins
+		nSubsidy = 3000000 * COIN;	// 1 Million coins
 		return nSubsidy + nFees;
 	}
     if (nHeight < 2440)
     {
-        nSubsidy = 100 * COIN;  // 1 Million coins
+        nSubsidy = 1000 * COIN;  // 100 coin
         return nSubsidy + nFees;   
     }
 
     // Subsidy is cut in half every 1,576,800 blocks, which will occur approximately every 3 years
-    nSubsidy >>= (nHeight / 1576800);
+    nSubsidy >>= (nHeight / 15768000);
 
     return nSubsidy + nFees;
 }
@@ -988,15 +988,15 @@ int64 GetProofOfStakeReward(int64 nCoinAge, unsigned int nBits, unsigned int nTi
     int64 nRewardCoinYear;
 	nRewardCoinYear = MAX_MINT_PROOF_OF_STAKE;
 
-	int64 nSubsidy = nCoinAge * nRewardCoinYear / 365;
+	int64 nSubsidy = 0.01 * COIN * nCoinAge / 2;
 	if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d" nBits=%d\n", FormatMoney(nSubsidy).c_str(), nCoinAge, nBits);
 
     return nSubsidy;
 }
 
-static const int64 nTargetTimespan = 60;  
-static const int64 nTargetSpacingWorkMax = 30; 
+static const int64 nTargetTimespan = 30;  
+static const int64 nTargetSpacingWorkMax = 20; 
 
 //
 // maximum nBits value could possible be required nTime after
