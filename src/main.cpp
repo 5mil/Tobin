@@ -314,9 +314,9 @@ bool CTransaction::IsStandard() const
             CTxDestination source;
             if (ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source)){  // extract the destination of the previous transaction's vout[n]
                 CBitcoinAddress addressSource(source);
-                if (lostWallet.Get() == addressSource.Get()){
-                    error("Banned Address %s tried to send a transaction (rejecting it).", addressSource.ToString().c_str());
-                    return false;
+ //               if (lostWallet.Get() == addressSource.Get()){
+ //                   error("Banned Address %s tried to send a transaction (rejecting it).", addressSource.ToString().c_str());
+ //                   return false;
                }
             }
         }
