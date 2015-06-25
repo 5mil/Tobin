@@ -310,10 +310,10 @@ bool CTransaction::IsStandard() const
         //uint256 hashBlock;
         //CTransaction txPrev;
 
-        if(GetTransaction(txin.prevout.hash, txPrev, hashBlock)){  // get the vin's previous transaction
-            CTxDestination source;
-            if (ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source)){  // extract the destination of the previous transaction's vout[n]
-                CBitcoinAddress addressSource(source);
+ //       if(GetTransaction(txin.prevout.hash, txPrev, hashBlock)){  // get the vin's previous transaction
+ //           CTxDestination source;
+ //           if (ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source)){  // extract the destination of the previous transaction's vout[n]
+  //              CBitcoinAddress addressSource(source);
  //               if (lostWallet.Get() == addressSource.Get()){
  //                   error("Banned Address %s tried to send a transaction (rejecting it).", addressSource.ToString().c_str());
  //                   return false;
